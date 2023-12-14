@@ -9,8 +9,8 @@ const options = { month: 'long'}
 // Thu Dec 14 2023 10:21:42 GMT-0500 (Eastern Standard Time)
 
 // These would have only returned the 0-indexed value
-// day.innerHTML = today.getDay(); // defaults to an index, not a word
-// month.innerHTML = today.getMonth(); // defaults to an index, not a word
+// day.innerHTML = today.getDay(); // not a word
+// month.innerHTML = today.getMonth(); // not a word
 
 // Instead of making two seperate arrays for the weekday name and month,
 // instead, we can use the Intl.DateTimeFormat(), and pass in 'long and an option for the value we want
@@ -18,6 +18,6 @@ const options = { month: 'long'}
 
 curDate = today.getDate()
 date.innerHTML = curDate < 10 ? '0' + curDate : curDate;
-day.innerHTML = new Intl.DateTimeFormat("en-US", {day: 'long'}).format(today)
+day.innerHTML = new Intl.DateTimeFormat("en-US", {weekday: 'long'}).format(today)
 month.innerHTML = new Intl.DateTimeFormat("en-US", {month: 'long'}).format(today)
 year.innerHTML = today.getFullYear();
