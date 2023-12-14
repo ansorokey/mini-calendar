@@ -3,17 +3,21 @@ const day = document.querySelector('#day');
 const month = document.querySelector('#month');
 const year = document.querySelector('#year');
 
-// const today = new Date();
+const today = new Date();
 const options = { month: 'long'}
-// const today = new Intl.DateTimeFormat("en-US", options).format(new Date())
-console.log(today);
-// default format as
+// default format:
 // Thu Dec 14 2023 10:21:42 GMT-0500 (Eastern Standard Time)
 
-date.innerHTML = today.getDate();
-day.innerHTML = today.getDay(); // defaults to an index, not a word
-month.innerHTML = today.getMonth(); // defaults to an index, not a word
-year.innerHTML = today.getFullYear();
+// These would have only returned the 0-indexed value
+// day.innerHTML = today.getDay(); // defaults to an index, not a word
+// month.innerHTML = today.getMonth(); // defaults to an index, not a word
 
-// @ TODO
-// get month name using toLocaleString
+// Instead of making two seperate arrays for the weekday name and month,
+// instead, we can use the Intl.DateTimeFormat(), and pass in 'long and an option for the value we want
+
+
+curDate = today.getDate()
+date.innerHTML = curDate < 10 ? '0' + curDate : curDate;
+day.innerHTML = new Intl.DateTimeFormat("en-US", {day: 'long'}).format(today)
+month.innerHTML = new Intl.DateTimeFormat("en-US", {month: 'long'}).format(today)
+year.innerHTML = today.getFullYear();
